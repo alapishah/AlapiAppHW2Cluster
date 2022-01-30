@@ -11,14 +11,21 @@ ext: 'png'
          var ratIcon = L.icon({
     iconUrl: 'https://e7.pngegg.com/pngimages/170/541/png-clipart-robbery-burglary-crime-theft-thief-mammal-people.png',
     iconSize: [30,30]
-  }); 
-  L.geoJson(data  ,{
-    pointToLayer: function(feature,latlng){
-	    return L.marker(latlng,{icon: ratIcon});
-    },
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup('<h1>Title: '+feature.properties.title+'</h1><p>Description:  '+feature.properties.description+'</p>');
-    }
-  }).addTo(map);
+  });    
+	  
+	  var crimes = L.geoJson(data,{
+      pointToLayer: function(feature,latlng){
+        var marker = L.marker(latlng,{icon: ratIcon});
+        marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
+        return marker;
+      }
+    });
+    var clusters = L.markerClusterGroup();
+    clusters.addLayer(crimes);
+    map.addLayer(clusters);
 });
 
+    var clusters = L.markerClusterGroup();
+    clusters.addLayer(ratIcon);
+    map.addLayer(clusters);
+});
