@@ -1,7 +1,4 @@
-html, body {
-  height: 95%;
-}
-
-#map {
-  height: 100%;
+#mapid { 
+  height: 1600px; 
+  width: 1600px;
 }
