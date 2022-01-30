@@ -1,6 +1,7 @@
-#mapid { 
-  height: 1600px; 
-  width: 1600px;
+html, body {
+  height: 95%;
 }
 
-
+#map {
+  height: 100%;
+}
